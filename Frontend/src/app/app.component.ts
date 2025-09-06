@@ -16,7 +16,7 @@ export class App implements OnInit, OnDestroy {
 
     public ngOnInit(): void {
         // Set initial lang attribute
-        this.setHtmlLangAttribute(this.translate.getCurrentLang() || this.translate.getFallbackLang() || "en");
+        this.setHtmlLangAttribute(this.translate.getCurrentLang() || this.translate.getFallbackLang() || 'en');
 
         // Subscribe to language changes
         const languageChangeSubscription: Subscription = this.translate.onLangChange.subscribe(
