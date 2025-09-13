@@ -1,5 +1,35 @@
 {
-  "app": {
-    "splash-screen-text": "The end of a film is not the end of a story."
+  "home-page": {
+    "splash-screen-text": "The end of a film is not the end of a story.",
+    "image-gallery": {
+      "ago": {
+        "title": "ago",
+        "description": "„Time forsooth has come to open our hearts shall we not perish in the battle!“"
+      },
+      "firedog": {
+        "title": "firedog",
+        "description": "„They are all outcasts, forgotten ones without hope. I live and suffer with them as this is my destiny.“"
+      },
+      "ghost-pack": {
+        "title": "ghost pack",
+        "description": "„If we intend to win this fucking war, we need a frigging wonder. And I will take care of that!“"
+      },
+      "heart-attack": {
+        "title": "heart attack",
+        "description": "„A man's character manifests itself in every cell.\""
+      },
+      "impact": {
+        "title": "impact",
+        "description": "„The earth groaneth heavily, bleak and with no man left. Perdition brought upon countless lives. With a force that once created all, now merely bequeathing death.“"
+      },
+      "past-descendant": {
+        "title": "past descendant",
+        "description": "„I am the Guardian of your soul and Measure of your deeds. I am the Force that leads you.“"
+      },
+      "someones-gotta-do-it": {
+        "title": "someone's gotta do it!",
+        "description": "„I am a philosophising chronicler or a chronic philosopher. That's up to you.“"
+      }
+    }
   }
 }

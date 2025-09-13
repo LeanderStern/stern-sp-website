@@ -1,4 +1,11 @@
-<div class="splash-screen">
-    <div id="splash-screen-cover" class="splash-screen"></div>
-    <h1 class="split">{{('app.splash-screen-text' | translate)}}</h1>
+<app-splash-screen (finished)="onSplashScreenFinished()"></app-splash-screen>
+<div class="flex justify-center p-10">
+    <div class="w-[100rem]">
+        <p-carousel [value]="imageMetadata" [numVisible]="3" [numScroll]="1" [circular]="true"
+                    [autoplayInterval]="5000">
+            <ng-template let-product pTemplate="item">
+                <img height="500" width="500" [ngSrc]="product.path" [alt]="product.title"/>
+            </ng-template>
+        </p-carousel>
+    </div>
 </div>

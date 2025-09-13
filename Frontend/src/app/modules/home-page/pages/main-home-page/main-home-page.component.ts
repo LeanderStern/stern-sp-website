@@ -1,45 +1,28 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
-import { ALREADY_VISITED } from '../../../shared/constants/session-storage';
-import { gsap, SplitText } from '../../../shared/constants/gsap'
-import { TranslatePipe } from '@ngx-translate/core';
+import { Component, signal, WritableSignal } from '@angular/core';
+import { SplashScreenComponent } from '../../components/splash-screen/splash-screen.component';
+import { Carousel } from 'primeng/carousel';
+import { GALLERY_IMAGE_METADATA } from '../../../shared/constants/gallery-image-metadata';
+import { GalleryImageMetadata } from '../../../shared/interfaces/gallery-image-metadata';
+import { NgOptimizedImage } from '@angular/common';
+import { PrimeTemplate } from 'primeng/api';
 
 @Component({
-  selector: 'app-main-home-page.component',
+  selector: 'app-main-home-page',
     imports: [
-        TranslatePipe
+        SplashScreenComponent,
+        Carousel,
+        NgOptimizedImage,
+        PrimeTemplate
     ],
   templateUrl: './main-home-page.component.html',
   styleUrl: './main-home-page.component.scss',
 })
-export class MainHomePageComponent implements OnInit {
+export class MainHomePageComponent {
 
-    public showSplashScreen: boolean;
-    public displaySplashScreenText: WritableSignal<boolean> = signal<boolean>(false)
+    public splashScreenFinished: WritableSignal<boolean> = signal<boolean>(false);
+    public readonly imageMetadata: GalleryImageMetadata[] = GALLERY_IMAGE_METADATA;
 
-    public ngOnInit(): void {
-        if (typeof window === 'undefined' || !window.sessionStorage) {
-            return
-        }
-        this.showSplashScreen = Boolean(!sessionStorage.getItem(ALREADY_VISITED));
-
-        if (this.showSplashScreen) {
-            SplitText.create('.split', {
-                type: 'lines, words',
-                mask: 'lines',
-                autoSplit: true,
-                wordsClass: 'mb-2',
-                onSplit(self) {
-                    return gsap.from(self.words, {duration: 1,
-                        onStart: (): void => {
-                            document.querySelector('#splash-screen-cover').remove();
-                        },
-                        y: 100,
-                        autoAlpha: 0,
-                        stagger: 0.05,
-                        ease: 'power3.out'}
-                    );
-                }
-            });
-        }
+    public onSplashScreenFinished(): void {
+        this.splashScreenFinished.set(true);
     }
 }

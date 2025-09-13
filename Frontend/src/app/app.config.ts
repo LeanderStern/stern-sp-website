@@ -13,9 +13,10 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { definePreset } from '@primeuix/themes';
 import { Preset } from '@primeuix/themes/types';
-import { provideTranslateService, TranslateService } from '@ngx-translate/core';
+import { InterpolatableTranslationObject, provideTranslateService, TranslateService } from '@ngx-translate/core';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Observable } from 'rxjs';
 
 const sternSPConfig: Preset = definePreset(Aura, {
     semantic: {
@@ -32,7 +33,7 @@ const sternSPConfig: Preset = definePreset(Aura, {
             900: '{amber.900}',
             950: '{amber.950}'
         }
-    }
+    },
 })
 
 export const appConfig: ApplicationConfig = {
@@ -56,14 +57,10 @@ export const appConfig: ApplicationConfig = {
               suffix: '.json'
           }),
           fallbackLang: 'en',
-          lang: 'en'
       }),
-      provideAppInitializer((): void => {
+      provideAppInitializer((): Observable<InterpolatableTranslationObject> => {
           const translate: TranslateService = inject(TranslateService);
-          const browserLang: string | undefined = translate.getBrowserLang();
-          if (browserLang) {
-              translate.use(translate.getBrowserLang())
-          }
+          return translate.use('en');
       })
   ],
 };

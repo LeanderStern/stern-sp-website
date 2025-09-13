@@ -1,0 +1,10 @@
+@if (showSplashScreen()) {
+    <div class="cover-full-screen flex flex-col justify-between">
+        <div class="flex absolute w-full h-full items-center justify-center">
+            <h1 class="split">{{('home-page.splash-screen-text' | translate)}}</h1>
+        </div>
+        <div class="splash-screen-half"></div>
+        <div class="splash-screen-half"></div>
+    </div>
+    <div id="splash-screen-cover" class="cover-full-screen bg-blue-500"></div>
+}

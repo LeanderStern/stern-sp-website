@@ -1,2 +1,7 @@
-<p>test</p>
+<p-drawer header="test"></p-drawer>
+<p-button icon="pi pi-check"></p-button>
+<p-breadcrumb [model]="currentRoute$ | async" [home]="homeRoute">
+    <ng-template>
+    </ng-template>
+</p-breadcrumb>
 <router-outlet></router-outlet>
