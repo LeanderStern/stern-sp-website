@@ -21,7 +21,6 @@ export class MainHomePageComponent {
 
     public splashScreenFinished: WritableSignal<boolean> = signal<boolean>(false);
     public readonly imageMetadata: GalleryImageMetadata[] = GALLERY_IMAGE_METADATA;
-
     public onSplashScreenFinished(): void {
         this.splashScreenFinished.set(true);
     }

@@ -1,23 +1,33 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
     "moduleResolution": "bundler",
-    "emitDecoratorMetadata": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
     "target": "es2022",
-    "module": "preserve",
+    "module": "esnext",
     "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
     "paths": {},
-    "isolatedModules": true
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "typeCheckHostBindings": true,
-    "strictTemplates": true
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
   "files": [],
   "include": [],
   "references": [
+    {
+      "path": "./tsconfig.editor.json"
+    },
     {
       "path": "./tsconfig.app.json"
     },
@@ -26,5 +36,11 @@
     }
   ],
   "compileOnSave": false,
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp"],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }

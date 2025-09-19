@@ -10,11 +10,11 @@ import { Button } from 'primeng/button';
 
 @Component({
     imports: [RouterModule, Breadcrumb, AsyncPipe, Drawer, Button],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
 })
-export class App implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
 
     public homeRoute: MenuItem = {
         icon: 'stern-sp-icon',
@@ -24,16 +24,17 @@ export class App implements OnInit, OnDestroy {
     private subscription: Subscription = new Subscription();
     private router: Router = inject(Router);
 
-    public ngOnInit(): void {
+    public constructor() {
         this.currentRoute$ = this.router.events.pipe(
             filter((x) => x instanceof NavigationEnd),
             map((x: NavigationEnd): MenuItem[] => {
-               return x.url.split('/').filter((x) => x.length > 0).map((x): MenuItem => {
-                   return {label: x};
-               })
+                return x.url.split('/').filter((x) => x.length > 0).map((x): MenuItem => {
+                    return {label: x};
+                })
             }),
         );
-
+    }
+    public ngOnInit(): void {
         // Set initial lang attribute
         this.setHtmlLangAttribute(this.translate.getCurrentLang() || this.translate.getFallbackLang() || 'en');
 

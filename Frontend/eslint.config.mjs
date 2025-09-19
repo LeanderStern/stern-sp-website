@@ -20,7 +20,7 @@ export default [
     ],
     // Override or add rules here
     rules: {
-        "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }]
+        'quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }]
     },
   },
   ...nx.configs['flat/angular'],

@@ -1,22 +1,16 @@
-import {
-    ApplicationConfig,
-    inject,
-    provideAppInitializer,
-    provideBrowserGlobalErrorListeners,
-    provideZoneChangeDetection,
-} from '@angular/core';
+import { ApplicationConfig, inject, provideAppInitializer, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideClientHydration, withEventReplay, } from '@angular/platform-browser';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeuix/themes/aura';
-import { definePreset } from '@primeuix/themes';
 import { Preset } from '@primeuix/themes/types';
+import { definePreset } from '@primeuix/themes';
 import { InterpolatableTranslationObject, provideTranslateService, TranslateService } from '@ngx-translate/core';
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Observable } from 'rxjs';
+import Aura from '@primeuix/themes/aura';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+
 
 const sternSPConfig: Preset = definePreset(Aura, {
     semantic: {
@@ -35,32 +29,28 @@ const sternSPConfig: Preset = definePreset(Aura, {
         }
     },
 })
-
 export const appConfig: ApplicationConfig = {
-  providers: [
-      provideClientHydration(withEventReplay()),
-      provideBrowserGlobalErrorListeners(),
-      provideZoneChangeDetection({ eventCoalescing: true }),
-      provideRouter(appRoutes),
-      provideAnimationsAsync(),
-      providePrimeNG({
-          ripple: true,
-          theme: {
-              preset: sternSPConfig
-          },
-      }),
-      provideZoneChangeDetection({ eventCoalescing: true }),
-      provideHttpClient(withFetch()),
-      provideTranslateService({
-          loader: provideTranslateHttpLoader({
-              prefix: '/i18n/',
-              suffix: '.json'
-          }),
-          fallbackLang: 'en',
-      }),
-      provideAppInitializer((): Observable<InterpolatableTranslationObject> => {
-          const translate: TranslateService = inject(TranslateService);
-          return translate.use('en');
-      })
-  ],
+    providers: [
+        provideClientHydration(withEventReplay()),
+        provideZoneChangeDetection({ eventCoalescing: true }),
+        provideRouter(appRoutes),
+        providePrimeNG({
+            ripple: true,
+            theme: {
+                preset: sternSPConfig
+            },
+        }),
+        provideHttpClient(withFetch()),
+        provideTranslateService({
+            loader: provideTranslateHttpLoader({
+                prefix: '/i18n/',
+                suffix: '.json'
+            }),
+            fallbackLang: 'en',
+        }),
+        provideAppInitializer((): Observable<InterpolatableTranslationObject> => {
+            const translate: TranslateService = inject(TranslateService);
+            return translate.use('en');
+        })
+    ],
 };

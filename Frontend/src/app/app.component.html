@@ -1,6 +1,7 @@
 <p-drawer header="test"></p-drawer>
 <p-button icon="pi pi-check"></p-button>
-<p-breadcrumb [model]="currentRoute$ | async" [home]="homeRoute">
+<h1 class="text-3xl font-bold underline">    Hello world!  </h1>
+<p-breadcrumb [model]="(currentRoute$ | async) ?? undefined" [home]="homeRoute">
     <ng-template>
     </ng-template>
 </p-breadcrumb>

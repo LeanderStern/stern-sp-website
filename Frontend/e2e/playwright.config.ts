@@ -24,9 +24,9 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npx nx run Frontend:serve',
+    command: 'npx nx run frontend:serve',
     url: 'http://localhost:4200',
-    reuseExistingServer: true,
+    reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
   projects: [

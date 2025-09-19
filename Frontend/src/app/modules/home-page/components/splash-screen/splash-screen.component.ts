@@ -20,7 +20,7 @@ export class SplashScreenComponent implements AfterViewInit {
         return;
     });
     private timeline = gsap.timeline();
-    private splitText: SplitText;
+    private splitText: SplitText | undefined;
 
     public ngAfterViewInit(): void {
         this.showSplashScreen.set(Boolean(!sessionStorage.getItem(ALREADY_VISITED)));
@@ -56,13 +56,15 @@ export class SplashScreenComponent implements AfterViewInit {
     }
 
     private runCleanupAnimation(): void {
-        this.animationContext.add(() => {
-            this.timeline.to(this.splitText.lines, {
-                y: 100,
-                autoAlpha: 0,
-                duration: 1,
-                ease: 'power3.out'
-            });
+        this.animationContext.add((): void => {
+            if (this.splitText) {
+                this.timeline.to(this.splitText.lines, {
+                    y: 100,
+                    autoAlpha: 0,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+            }
             this.timeline.to('.splash-screen-half', {
                 height: 0,
                 duration: 1,

@@ -15,9 +15,9 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "68b6d99da477a47d94fc5146",
+  "nxCloudId": "68c6bb721a4a45199f8b98eb",
   "targetDefaults": {
-    "@angular/build:application": {
+    "@angular-devkit/build-angular:application": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
@@ -43,6 +43,9 @@
           "codeCoverage": true
         }
       }
+    },
+    "e2e-ci--**/**": {
+      "dependsOn": ["^build"]
     }
   },
   "plugins": [
@@ -65,10 +68,7 @@
       "linter": "eslint",
       "style": "scss",
       "unitTestRunner": "jest"
-    },
-    "@nx/angular:component": {
-      "style": "scss"
     }
   },
-  "defaultProject": "Frontend"
+  "defaultProject": "frontend"
 }
