@@ -1,8 +1,4 @@
-<p-drawer header="test"></p-drawer>
-<p-button icon="pi pi-check"></p-button>
-<h1 class="text-3xl font-bold underline">    Hello world!  </h1>
-<p-breadcrumb [model]="(currentRoute$ | async) ?? undefined" [home]="homeRoute">
-    <ng-template>
-    </ng-template>
-</p-breadcrumb>
-<router-outlet></router-outlet>
+<p-drawer [(visible)]="drawerVisible" header="test"></p-drawer>
+<div class="p-4">
+    <router-outlet></router-outlet>
+</div>

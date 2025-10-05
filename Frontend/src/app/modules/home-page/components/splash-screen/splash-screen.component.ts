@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
+import { Component, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ALREADY_VISITED } from '../../../shared/constants/session-storage';
 import { gsap, SplitText } from '../../../shared/constants/gsap';
@@ -11,7 +11,7 @@ import { gsap, SplitText } from '../../../shared/constants/gsap';
   templateUrl: './splash-screen.component.html',
   styleUrl: './splash-screen.component.scss',
 })
-export class SplashScreenComponent implements AfterViewInit {
+export class SplashScreenComponent {
 
     public showSplashScreen: WritableSignal<boolean> = signal<boolean>(true);
     public finished: OutputEmitterRef<void> = output<void>();
@@ -22,12 +22,14 @@ export class SplashScreenComponent implements AfterViewInit {
     private timeline = gsap.timeline();
     private splitText: SplitText | undefined;
 
-    public ngAfterViewInit(): void {
+    public constructor() {
         this.showSplashScreen.set(Boolean(!sessionStorage.getItem(ALREADY_VISITED)));
         sessionStorage.setItem(ALREADY_VISITED, 'true');
-        if (this.showSplashScreen()) {
-            this.runSplashScreenAnimation();
-        }
+        document.fonts.ready.then((): void => {
+            if (this.showSplashScreen()) {
+                this.runSplashScreenAnimation();
+            }
+        });
     }
 
     private runSplashScreenAnimation(): void {

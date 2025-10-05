@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import Aura from '@primeuix/themes/aura';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 const sternSPConfig: Preset = definePreset(Aura, {
@@ -34,6 +35,7 @@ export const appConfig: ApplicationConfig = {
         provideClientHydration(withEventReplay()),
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(appRoutes),
+        provideAnimationsAsync(),
         providePrimeNG({
             ripple: true,
             theme: {
