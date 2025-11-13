@@ -1,24 +1,20 @@
 import { Component, signal, WritableSignal } from '@angular/core';
 import { SplashScreenComponent } from '../../components/splash-screen/splash-screen.component';
-import { Carousel } from 'primeng/carousel';
 import { GALLERY_IMAGE_METADATA } from '../../../shared/constants/gallery-image-metadata';
 import { GalleryImageMetadata } from '../../../shared/interfaces/gallery-image-metadata';
-import { NgOptimizedImage } from '@angular/common';
-import { PrimeTemplate } from 'primeng/api';
-import { TranslatePipe } from '@ngx-translate/core';
+import { CarouselComponent } from '../../components/carousel/carousel.component';
 
 @Component({
   selector: 'app-main-home-page',
     imports: [
         SplashScreenComponent,
-        Carousel,
-        NgOptimizedImage,
-        PrimeTemplate,
-        TranslatePipe
+        CarouselComponent
     ],
   templateUrl: './main-home-page.component.html',
   styleUrl: './main-home-page.component.scss',
 })
+
+// TODO title für die projekte, bilder optimieren, gsap plugin imports zentralisieren
 export class MainHomePageComponent {
 
     public splashScreenFinished: WritableSignal<boolean> = signal<boolean>(false);

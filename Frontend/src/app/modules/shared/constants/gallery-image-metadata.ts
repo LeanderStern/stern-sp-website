@@ -24,7 +24,7 @@ const metadata: Omit<GalleryImageMetadata, 'id'>[] = [
     {
         path: 'assets/impact.jpg',
         titleReference: 'home-page.image-gallery.impact.title',
-        descriptionReference: 'home-page.image-gallery.impact.title',
+        descriptionReference: 'home-page.image-gallery.impact.description',
     },
     {
         path: 'assets/past-descendant.jpg',

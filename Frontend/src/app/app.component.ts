@@ -2,10 +2,9 @@ import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@a
 import { RouterModule } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { Drawer } from 'primeng/drawer';
 
 @Component({
-    imports: [RouterModule, Drawer],
+    imports: [RouterModule],
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',

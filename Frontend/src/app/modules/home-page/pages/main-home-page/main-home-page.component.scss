@@ -1,3 +1,9 @@
-::ng-deep .p-carousel-item-list > div:nth-child(odd) {
-  transform: translateY(-100px);
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem
 }

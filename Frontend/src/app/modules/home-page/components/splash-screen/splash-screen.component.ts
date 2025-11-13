@@ -1,7 +1,11 @@
-import { Component, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
+import { AfterViewInit, Component, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ALREADY_VISITED } from '../../../shared/constants/session-storage';
-import { gsap, SplitText } from '../../../shared/constants/gsap';
+import { gsap } from 'gsap'
+import { SplitText } from 'gsap/SplitText';
+
+type Context = gsap.Context;
+type Timeline = gsap.core.Timeline;
 
 @Component({
   selector: 'app-splash-screen',
@@ -11,18 +15,18 @@ import { gsap, SplitText } from '../../../shared/constants/gsap';
   templateUrl: './splash-screen.component.html',
   styleUrl: './splash-screen.component.scss',
 })
-export class SplashScreenComponent {
+export class SplashScreenComponent implements AfterViewInit {
 
     public showSplashScreen: WritableSignal<boolean> = signal<boolean>(true);
     public finished: OutputEmitterRef<void> = output<void>();
 
-    private animationContext = gsap.context((): void => {
+    private animationContext: Context = gsap.context((): void => {
         return;
     });
-    private timeline = gsap.timeline();
+    private timeline: Timeline = gsap.timeline();
     private splitText: SplitText | undefined;
 
-    public constructor() {
+    public ngAfterViewInit(): void {
         this.showSplashScreen.set(Boolean(!sessionStorage.getItem(ALREADY_VISITED)));
         sessionStorage.setItem(ALREADY_VISITED, 'true');
         document.fonts.ready.then((): void => {
@@ -46,7 +50,7 @@ export class SplashScreenComponent {
                     stagger: 0.05,
                     ease: 'power3.out',
                     onStart: (): void => {
-                        const cover: Element | null = document.querySelector('#splash-screen-cover');
+                        const cover: HTMLElement | null = document.querySelector('#splash-screen-cover');
                         if (cover) {
                             cover.remove();
                         }
