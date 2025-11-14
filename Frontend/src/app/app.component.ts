@@ -9,6 +9,8 @@ import { Subscription } from 'rxjs';
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
 })
+
+// TODO Font Resizing
 export class AppComponent implements OnInit, OnDestroy {
     public drawerVisible: WritableSignal<boolean> = signal(false);
 
