@@ -33,6 +33,9 @@ export class SplashScreenComponent implements AfterViewInit {
             if (this.showSplashScreen()) {
                 this.runSplashScreenAnimation();
             }
+            else {
+                this.finished.emit();
+            }
         });
     }
 

@@ -4,13 +4,15 @@ import { GalleryImageMetadata } from '../../../shared/interfaces/gallery-image-m
 import { horizontalLoop } from './utils/horizontalLoop';
 import { TranslatePipe } from '@ngx-translate/core';
 import { gsap } from 'gsap';
+import { Button } from 'primeng/button';
+import { CarouselImagePositionLabel } from '../../enums/carousel-image-position-label';
 import Context = gsap.Context;
 
 type Timeline = gsap.core.Timeline;
 
 @Component({
   selector: 'app-carousel',
-    imports: [CommonModule, NgOptimizedImage, TranslatePipe],
+    imports: [CommonModule, NgOptimizedImage, TranslatePipe, Button],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
 })
@@ -22,38 +24,25 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     public autoScroll = input(false);
 
     public activeElementIndex = signal<number | null>(null);
-    // TODO Digga was los
-    public imageElementOffset = computed((): Map<number, string> => {
+
+    public labelImagePosition = computed((): Map<number, string> | null => {
         const activeIndex = this.activeElementIndex();
         if (activeIndex !== null) {
             const imageElements = this.imageElements();
-            const offsets = new Map();
-            for (let i = 0; i < imageElements.length; i++) {
-                if (i < activeIndex) {
-                    offsets.set(i, 'previous');
-                }
-                if (i === activeIndex) {
-                    offsets.set(i, 'active');
-                }
-                if (i > activeIndex) {
-                    offsets.set(i, 'next');
-                }
-            }
-            const a = new Map([
-                [(activeIndex - 1) % imageElements.length, 'previous'],
-                [activeIndex, 'active'],
-                [(activeIndex + 1) % imageElements.length, 'next'],
+            return new Map([
+                [(activeIndex - 1) % imageElements.length, CarouselImagePositionLabel.Previous],
+                [activeIndex, CarouselImagePositionLabel.Active],
+                [(activeIndex + 1) % imageElements.length, CarouselImagePositionLabel.Next],
             ]);
-            return a;
         }
         else {
-            return new Map();
+            return null;
         }
     });
 
     public isMouseOverImage = false;
 
-    private animationContext!: Context;
+    private animationContext?: Context;
     private loop!: Timeline;
     private intervalId?: number;
 
@@ -69,23 +58,19 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
                 }
             }) as unknown as Timeline;
         });
-        this.loop['next']({duration: 0}); // centers the carousel to the next element
+        this.loop[CarouselImagePositionLabel.Next]({duration: 0}); // centers the carousel to the next element
 
-        if (this.autoScroll()) {
-            this.intervalId = window.setInterval(() => this.isMouseOverImage ? null : this.next(), 5000);
+        if (this.autoScroll() && !this.isMouseOverImage) {
+            this.intervalId = window.setInterval(() => this.loop[CarouselImagePositionLabel.Next]({duration: 1, ease: 'power1.inOut'}), 8000);
         }
     }
 
     public previous(): void {
-        return;
-    }
-
-    public toggleOverflow(): void {
-        return;
+        this.loop[CarouselImagePositionLabel.Previous]({duration: 0.5, ease: 'power1.inOut'});
     }
 
     public next(): void {
-        this.loop['next']({duration: 1, ease: 'power1.inOut'});
+        this.loop[CarouselImagePositionLabel.Next]({duration: 0.5, ease: 'power1.inOut'});
     }
 
     public onMouseOverImage(isOverImage: boolean): void {
@@ -96,6 +81,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
         if (this.intervalId) {
             window.clearInterval(this.intervalId);
         }
-        this.animationContext.kill();
+        if (this.animationContext) {
+            this.animationContext.kill();
+        }
     }
 }
