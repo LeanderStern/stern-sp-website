@@ -15,11 +15,10 @@ type Timeline = gsap.core.Timeline;
   styleUrl: './carousel.component.scss',
 })
 
-// TODO look inside horizontal loop and somehow cap velocity, disable next when throwing, mobile scaling
+// TODO look inside horizontal loop and somehow cap velocity and disable next when throwing
 export class CarouselComponent implements AfterViewInit, OnDestroy {
 
     public imageElements: InputSignal<GalleryImageMetadata[]> = input.required();
-    public autoScroll = input(false);
 
     public activeElementIndex = signal<number | null>(null);
     // TODO Digga was los
@@ -55,7 +54,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
 
     private animationContext!: Context;
     private loop!: Timeline;
-    private intervalId?: number;
+    private intervalId!: number;
 
     public ngAfterViewInit(): void {
         const boxes = document.querySelectorAll<HTMLElement>('.box');
@@ -69,11 +68,8 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
                 }
             }) as unknown as Timeline;
         });
-        this.loop['next']({duration: 0}); // centers the carousel to the next element
-
-        if (this.autoScroll()) {
-            this.intervalId = window.setInterval(() => this.isMouseOverImage ? null : this.next(), 5000);
-        }
+        this.next();
+        this.intervalId = window.setInterval(() => this.isMouseOverImage ? null : this.next(), 5000);
     }
 
     public previous(): void {
@@ -93,9 +89,7 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        if (this.intervalId) {
-            window.clearInterval(this.intervalId);
-        }
+        window.clearInterval(this.intervalId);
         this.animationContext.kill();
     }
 }

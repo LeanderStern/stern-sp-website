@@ -1,16 +1,15 @@
-<div class="carousel-container">
+<div class="container">
     <div class="wrapper">
         @for (image of imageElements(); track image.id; let i = $index) {
-            @let isActive = activeElementIndex() === i;
             <div class="box">
-                <div class="inner-box" [ngClass]="isActive ? 'active' : null">
-                    <div [style.pointer-events]="isActive ? null : 'none'" class="image-container" (mouseenter)="onMouseOverImage(true)" (mouseleave)="onMouseOverImage(false)">
+                <div class="inner-box" [ngClass]="activeElementIndex() === i ? 'active' : null">
+                    <div [style.pointer-events]="activeElementIndex() === i ? null : 'none'" class="image-container" (mouseenter)="onMouseOverImage(true)" (mouseleave)="onMouseOverImage(false)">
                         <img [ngSrc]="image.path" [alt]="image.titleReference" fill>
-                        <div class="description-container">
+                        <div class="text-container">
+                            <h4>{{image.titleReference | translate}}</h4>
                             <h6>{{image.descriptionReference | translate}}</h6>
                         </div>
                     </div>
-                    <h3 class="title" [style.opacity]="isActive ? null : '0'">{{image.titleReference | translate}}</h3>
                 </div>
             </div>
         }

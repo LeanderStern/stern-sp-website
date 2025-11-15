@@ -14,7 +14,7 @@ import { CarouselComponent } from '../../components/carousel/carousel.component'
   styleUrl: './main-home-page.component.scss',
 })
 
-// TODO title für die projekte, bilder optimieren, gsap plugin imports zentralisieren, font scaling mit screensize
+// TODO title für die projekte, bilder optimieren, gsap plugin imports zentralisieren
 export class MainHomePageComponent {
 
     public splashScreenFinished: WritableSignal<boolean> = signal<boolean>(false);
