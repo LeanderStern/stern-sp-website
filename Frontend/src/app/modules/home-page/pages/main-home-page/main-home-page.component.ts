@@ -3,12 +3,14 @@ import { SplashScreenComponent } from '../../components/splash-screen/splash-scr
 import { GALLERY_IMAGE_METADATA } from '../../../shared/constants/gallery-image-metadata';
 import { GalleryImageMetadata } from '../../../shared/interfaces/gallery-image-metadata';
 import { CarouselComponent } from '../../components/carousel/carousel.component';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-main-home-page',
     imports: [
         SplashScreenComponent,
-        CarouselComponent
+        CarouselComponent,
+        Button
     ],
   templateUrl: './main-home-page.component.html',
   styleUrl: './main-home-page.component.scss',

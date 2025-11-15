@@ -22,7 +22,7 @@
     right: 0;
     bottom: 0;
     width: 7%;
-    background: linear-gradient(to left, var(--bg-dark), transparent);
+    background: linear-gradient(to left, var(--p-surface-950), transparent);
     z-index: 1;
   }
 
@@ -33,7 +33,7 @@
     left: 0;
     bottom: 0;
     width: 7%;
-    background: linear-gradient(to right, var(--bg-dark), transparent);
+    background: linear-gradient(to right, var(--p-surface-950), transparent);
     z-index: 1;
   }
 }
@@ -63,8 +63,8 @@
 
   img {
     filter: brightness(100%) blur(0px);
-    mask-image: linear-gradient(to bottom, var(--bg-dark) 70%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, var(--bg-dark) 70%, transparent);
+    mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
     transition: filter 0.3s ease-in-out;
   }
 
