@@ -15,6 +15,8 @@ type Timeline = gsap.core.Timeline;
   templateUrl: './splash-screen.component.html',
   styleUrl: './splash-screen.component.scss',
 })
+
+//TODO doesnt work in firefox
 export class SplashScreenComponent implements AfterViewInit {
 
     public showSplashScreen: WritableSignal<boolean> = signal<boolean>(true);
