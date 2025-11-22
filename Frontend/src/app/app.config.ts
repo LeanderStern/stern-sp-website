@@ -57,6 +57,15 @@ const sternSPConfig: Preset = definePreset(Aura, {
                 }
             }
         }
+    },
+    components: {
+        message: {
+            text: {
+                lg: {
+                    fontSize: '1.5rem'
+                }
+            }
+        }
     }
 })
 
