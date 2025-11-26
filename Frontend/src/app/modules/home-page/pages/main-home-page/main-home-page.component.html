@@ -3,17 +3,19 @@
     <app-splash-screen (finished)="this.splashScreenFinished.set(true);"></app-splash-screen>
 }
 
-<div class="flex flex-col w-full justify-between items-center h-screen p-10">
-    <div>
-        <div class="flex justify-center">
-            <h1>{{'home-page.title' | translate}}</h1>
+<div class="flex flex-col w-full h-[2000px] p-10">
+    <div class="flex flex-col w-full justify-between items-center h-screen">
+        <div>
+            <div class="flex justify-center">
+                <h1>{{'home-page.title' | translate}}</h1>
+            </div>
+            @if (splashScreenFinished) {
+                <app-carousel class="w-full" [imageElements]="imageMetadata" [autoScroll]="true"></app-carousel>
+            }
         </div>
-        @if (splashScreenFinished) {
-            <app-carousel class="w-full" [imageElements]="imageMetadata"></app-carousel>
-        }
-    </div>
-    <div class="scroll-indicator" [style.opacity]="splashScreenFinished ? 1 : 0">
-        <p-message severity="secondary" variant="simple" size="large">{{'home-page.scroll-info-message' | translate}}</p-message>
-        <i style="font-size: 1rem" class="pi pi-arrow-down animate-bounce"></i>
+        <div class="scroll-indicator" [style.opacity]="splashScreenFinished ? 1 : 0">
+            <p-message severity="secondary" variant="simple" size="large">{{'home-page.scroll-info-message' | translate}}</p-message>
+            <i style="font-size: 1rem" class="pi pi-arrow-down animate-bounce"></i>
+        </div>
     </div>
 </div>

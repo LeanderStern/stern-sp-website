@@ -11,6 +11,11 @@ import { providePrimeNG } from 'primeng/config';
 import { Preset } from '@primeuix/themes/types';
 import { definePreset } from '@primeuix/themes';
 import Aura from '@primeuix/themes/aura';
+import { gsap } from 'gsap';
+import { InertiaPlugin } from 'gsap/InertiaPlugin'
+import { Draggable } from 'gsap/Draggable'
+import { SplitText} from "gsap/SplitText";
+import { ScrollTrigger} from "gsap/ScrollTrigger";
 
 const sternSPConfig: Preset = definePreset(Aura, {
     semantic: {
@@ -91,6 +96,7 @@ export const appConfig: ApplicationConfig = {
             fallbackLang: 'en',
         }),
         provideAppInitializer((): Observable<InterpolatableTranslationObject> => {
+            gsap.registerPlugin(SplitText, Draggable, InertiaPlugin, ScrollTrigger)
             const translate: TranslateService = inject(TranslateService);
             return translate.use('en');
         })
