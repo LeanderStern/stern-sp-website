@@ -6,10 +6,18 @@ import { CarouselComponent } from '../../components/carousel/carousel.component'
 import { TranslatePipe } from '@ngx-translate/core';
 import { Message } from 'primeng/message';
 import { NgOptimizedImage } from '@angular/common';
+import { HeroSection } from '../../components/hero-section/hero-section';
 
 @Component({
   selector: 'app-main-home-page',
-  imports: [SplashScreenComponent, CarouselComponent, TranslatePipe, Message, NgOptimizedImage],
+  imports: [
+    SplashScreenComponent,
+    CarouselComponent,
+    TranslatePipe,
+    Message,
+    NgOptimizedImage,
+    HeroSection,
+  ],
   templateUrl: './main-home-page.component.html',
   styleUrl: './main-home-page.component.css',
 })

@@ -1,22 +1,7 @@
-@let splashScreenFinished = this.splashScreenFinished();
-@if (!splashScreenFinished) {
-    <app-splash-screen (finished)="this.splashScreenFinished.set(true);"></app-splash-screen>
-}
-
-<div class="flex flex-col w-full h-[2000px] p-10">
-    <div class="flex flex-col h-screen items-center">
-      <div class="w-1/2 h-1/2 bg-cover">
-        <img ngSrc="assets/new-logo-glow.png" alt="Stern Screenplays Logo" fill>
-      </div>
-    </div>
-</div>
-<div class="flex justify-center">
-  <h1>{{'home-page.title' | translate}}</h1>
-</div>
-@if (splashScreenFinished) {
-  <app-carousel class="grow w-full" [imageElements]="imageMetadata" [autoScroll]="false"></app-carousel>
-}
-<div class="scroll-indicator" [style.opacity]="splashScreenFinished ? 1 : 0">
-  <p-message severity="secondary" variant="simple" size="large">{{'home-page.scroll-info-message' | translate}}</p-message>
-  <i style="font-size: 1rem" class="pi pi-arrow-down animate-bounce"></i>
+<div class="flex flex-col">
+  <app-hero-section/>
+  <div class="flex justify-center mt-">
+    <h1>{{'home-page.projects' | translate}}</h1>
+  </div>
+  <app-carousel class="h-[75vh] w-full" [imageElements]="imageMetadata" [autoScroll]="false"></app-carousel>
 </div>
