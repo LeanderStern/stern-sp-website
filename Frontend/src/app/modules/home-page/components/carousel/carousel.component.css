@@ -81,12 +81,13 @@
   transform: scale(85%, 85%);
   gap: 1rem;
   margin-top: 20%;
+  margin-bottom: 20%;
 }
 
 .image-container {
   position: relative;
   height: 80%;
-  display: flex;
+  display: grid;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 0.75rem;

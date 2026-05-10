@@ -6,7 +6,7 @@ import { CarouselComponent } from '../../components/carousel/carousel.component'
 import { TranslatePipe } from '@ngx-translate/core';
 import { Message } from 'primeng/message';
 import { NgOptimizedImage } from '@angular/common';
-import { HeroSection } from '../../components/hero-section/hero-section';
+import { HeroSectionComponent } from '../../components/hero-section/hero-section.component';
 
 @Component({
   selector: 'app-main-home-page',
@@ -16,7 +16,7 @@ import { HeroSection } from '../../components/hero-section/hero-section';
     TranslatePipe,
     Message,
     NgOptimizedImage,
-    HeroSection,
+    HeroSectionComponent,
   ],
   templateUrl: './main-home-page.component.html',
   styleUrl: './main-home-page.component.css',

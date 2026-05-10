@@ -1,0 +1,66 @@
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out 5s;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.star-field {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.star-field canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 1px;
+  height: 70px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.75));
+  border-radius: 0 0 50% 50%;
+  transform: rotate(-45deg);
+  transform-origin: top center;
+  opacity: 0;
+}
+
+.shooting-star--1 {
+  top: 8%;
+  left: 25%;
+  animation: shoot 14s ease-in infinite;
+  animation-delay: 4s;
+}
+
+.shooting-star--2 {
+  top: 4%;
+  left: 65%;
+  animation: shoot 14s ease-in infinite;
+  animation-delay: 10s;
+}
+
+.shooting-star--3 {
+  top: 18%;
+  left: 80%;
+  animation: shoot 14s ease-in infinite;
+  animation-delay: 18s;
+}
+
+@keyframes shoot {
+  0%   { opacity: 0; transform: translateX(0) translateY(0) rotate(-45deg); }
+  3%   { opacity: 1; }
+  15%  { opacity: 0; transform: translateX(220px) translateY(220px) rotate(-45deg); }
+  100% { opacity: 0; transform: translateX(220px) translateY(220px) rotate(-45deg); }
+}

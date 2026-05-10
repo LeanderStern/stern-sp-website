@@ -8,6 +8,8 @@
         <div class="inner-box" [ngClass]="imagePosition ? imagePosition.get(i) : null">
           <div [style.pointer-events]="isActive ? null : 'none'" class="image-container" (mouseenter)="onMouseOverImage(true)" (mouseleave)="onMouseOverImage(false)">
             <img [ngSrc]="image.path" [alt]="image.titleReference" fill>
+            <h2 class="z-50">{{ image.titleReference | translate }}</h2>
+            <p class="z-50">{{ image.descriptionReference | translate }}</p>
           </div>
         </div>
       </div>
