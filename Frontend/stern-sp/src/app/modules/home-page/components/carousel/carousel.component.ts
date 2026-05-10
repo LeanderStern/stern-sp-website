@@ -25,7 +25,7 @@ type Timeline = gsap.core.Timeline;
   selector: 'app-carousel',
     imports: [CommonModule, NgOptimizedImage, TranslatePipe, Button],
   templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.scss',
+  styleUrl: './carousel.component.css',
 })
 
 // TODO look inside horizontal loop and somehow cap velocity, disable next when throwing, mobile scaling
@@ -52,14 +52,14 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
     });
 
     public isMouseOverImage = false;
-    
+
     private horizontalLoopContext!: Context;
     private loop!: Timeline;
     private intervalId?: number;
-    
+
     public ngAfterViewInit(): void {
         const boxes = document.querySelectorAll<HTMLElement>('.box');
-        
+
         this.horizontalLoopContext = gsap.context((): void => {
             this.loop = horizontalLoop(boxes, {
                 paused: true,

@@ -3,17 +3,20 @@
 }
 
 .carousel-container {
+  height: 100%;
+  display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
 }
 
 .wrapper {
-  height: auto;
+  height: 100%;
   position: relative;
   display: flex;
   align-items: center;
   overflow: hidden;
+  width: 100%;
 }
 
 .wrapper::after {
@@ -54,8 +57,7 @@
 }
 
 .box {
-  width: 33%;
-  flex-shrink: 0;
+  height: 100%;
 }
 
 .box:nth-child(2) > * {
@@ -72,6 +74,7 @@
 
 .inner-box {
   display: flex;
+  height: 100%;
   flex-direction: column;
   object-fit: cover;
   transition: transform ease-in-out 0.5s;
@@ -82,8 +85,8 @@
 
 .image-container {
   position: relative;
+  height: 80%;
   display: flex;
-  flex-grow: 1;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 0.75rem;
@@ -94,25 +97,6 @@
   mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
   transition: filter 0.3s ease-in-out;
-}
-
-.image-container:hover img {
-  filter: brightness(50%) blur(2px);
-}
-
-.description-container {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  flex-grow: 1;
-  padding: 1rem;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.description-container:hover {
-  opacity: 1;
 }
 
 .title {

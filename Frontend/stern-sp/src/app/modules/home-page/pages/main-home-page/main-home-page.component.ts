@@ -5,22 +5,17 @@ import { GalleryImageMetadata } from '../../../shared/interfaces/gallery-image-m
 import { CarouselComponent } from '../../components/carousel/carousel.component';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Message } from 'primeng/message';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-main-home-page',
-    imports: [
-        SplashScreenComponent,
-        CarouselComponent,
-        TranslatePipe,
-        Message
-    ],
+  imports: [SplashScreenComponent, CarouselComponent, TranslatePipe, Message, NgOptimizedImage],
   templateUrl: './main-home-page.component.html',
   styleUrl: './main-home-page.component.css',
 })
 
 // TODO title für die projekte, bilder optimieren, gsap plugin imports zentralisieren, font scaling mit screensize
 export class MainHomePageComponent {
-
-    public splashScreenFinished: WritableSignal<boolean> = signal<boolean>(false);
-    public readonly imageMetadata: GalleryImageMetadata[] = GALLERY_IMAGE_METADATA;
+  public splashScreenFinished: WritableSignal<boolean> = signal<boolean>(false);
+  public readonly imageMetadata: GalleryImageMetadata[] = GALLERY_IMAGE_METADATA;
 }

@@ -1,25 +1,19 @@
 <div class="carousel-container">
-    <div class="flex items-center">
-        <p-button (onClick)="cycleLeft()" size="large" icon="pi pi-angle-left" [rounded]="true" [text]="true" />
-        <div class="wrapper">
-            @for (image of imageElements(); track image.id; let i = $index) {
-                @let isActive = activeElementIndex() === i;
-                @let imagePosition = labelImagePosition();
-                <div class="box">
-                    <div class="inner-box" [ngClass]="imagePosition ? imagePosition.get(i) : null">
-                        <div [style.pointer-events]="isActive ? null : 'none'" class="image-container" (mouseenter)="onMouseOverImage(true)" (mouseleave)="onMouseOverImage(false)">
-                            <img [ngSrc]="image.path" [alt]="image.titleReference" fill>
-                            <div class="description-container">
-                                <h6>{{image.descriptionReference | translate}}</h6>
-                            </div>
-                        </div>
-                        <h3 class="title" [style.opacity]="isActive ? null : '0'">{{image.titleReference | translate}}</h3>
-                    </div>
-                </div>
-            }
+  <p-button (onClick)="cycleLeft()" size="large" icon="pi pi-angle-left" [rounded]="true" [text]="true" />
+  <div class="wrapper">
+    @for (image of imageElements(); track image.id; let i = $index) {
+      @let isActive = activeElementIndex() === i;
+      @let imagePosition = labelImagePosition();
+      <div class="box">
+        <div class="inner-box" [ngClass]="imagePosition ? imagePosition.get(i) : null">
+          <div [style.pointer-events]="isActive ? null : 'none'" class="image-container" (mouseenter)="onMouseOverImage(true)" (mouseleave)="onMouseOverImage(false)">
+            <img [ngSrc]="image.path" [alt]="image.titleReference" fill>
+          </div>
         </div>
-        <p-button (onClick)="cycleRight()" size="large" icon="pi pi-angle-right" [rounded]="true" [text]="true" />
-    </div>
+      </div>
+    }
+  </div>
+  <p-button (onClick)="cycleRight()" size="large" icon="pi pi-angle-right" [rounded]="true" [text]="true" />
 </div>
 
 
