@@ -6,10 +6,10 @@
       @let imagePosition = labelImagePosition();
       <div class="box">
         <div class="inner-box" [ngClass]="imagePosition ? imagePosition.get(i) : null">
-          <div [style.pointer-events]="isActive ? null : 'none'" class="image-container" (mouseenter)="onMouseOverImage(true)" (mouseleave)="onMouseOverImage(false)">
-            <img [ngSrc]="image.path" [alt]="image.titleReference" fill>
-            <h1 class="z-50 row-span-2 place-self-center">{{ image.titleReference | translate }}</h1>
-            <p class="z-50">{{ image.descriptionReference | translate }}</p>
+          <h3 class="z-50">{{ image.titleReference | translate }}</h3>
+          <div [style.pointer-events]="isActive ? null : 'none'" class="image-container image-border-radius" (mouseenter)="onMouseOverImage(true)" (mouseleave)="onMouseOverImage(false)">
+            <img class="image-bottom-shadow" [ngSrc]="image.path" [alt]="image.titleReference" fill>
+            <p class="z-50 image-text-shadow col-start-2 row-start-2 self-end">{{ image.descriptionReference | translate }}</p>
           </div>
         </div>
       </div>

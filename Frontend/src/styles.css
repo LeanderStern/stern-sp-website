@@ -10,9 +10,26 @@
   font-size: 1rem;
 }
 
+.keyword {
+  font-family: "Cormorant Garamond", sans-serif;
+  font-style: italic;
+  font-size: 3.815rem;
+  letter-spacing: -0.021em;
+  line-height: 1;
+}
+
+.translate-bold {
+  font-weight: bold;
+}
+
 body {
   background-color: var(--p-surface-950);
   color: var(--p-text-color);
+}
+
+span {
+  line-height: 1.5;
+  font-family: "Courier Prime", sans-serif;
 }
 
 p {
@@ -51,4 +68,21 @@ h1 {
   font-size: 3.815rem;
   letter-spacing: -0.021em;
   line-height: 1;
+}
+
+.image-border-radius {
+  border-radius: 0.75rem;
+}
+
+.image-bottom-shadow {
+  mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
+}
+
+.image-text-shadow {
+  text-shadow:
+    0 0 4px rgba(0, 0, 0, 0.95),
+    0 1px 4px rgba(0, 0, 0, 0.85),
+    0 2px 10px rgba(0, 0, 0, 0.7),
+    0 4px 20px rgba(0, 0, 0, 0.5);
 }

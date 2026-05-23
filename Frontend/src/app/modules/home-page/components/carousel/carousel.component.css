@@ -89,15 +89,14 @@
   height: 80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  padding: 0.5rem;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 0.75rem;
 }
 
 .image-container img {
   filter: brightness(100%) blur(0px);
-  mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
   transition: filter 0.3s ease-in-out;
 }
 

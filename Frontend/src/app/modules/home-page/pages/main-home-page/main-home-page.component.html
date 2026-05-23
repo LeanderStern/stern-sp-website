@@ -1,7 +1,54 @@
-<div class="flex flex-col">
+<div id="content-wrapper" class="flex flex-col gap-20">
   <app-hero-section/>
-  <div class="flex justify-center mt-50">
-    <h1>{{'home-page.projects' | translate}}</h1>
+  <div class="quote-parallax-container">
+    <div id="quote-image" class="absolute aspect-landscape w-full">
+      <img class="sepia" ngSrc="assets/quote-image.jpg" alt="Quote Background" fill>
+    </div>
+    <div class="flex flex-col justify-between relative grow">
+      <div class="recommendation-grid image-text-shadow">
+        <span>{{'home-page.recommendations.ago.recommendation-context' | translate}}</span>
+        <h5>{{'home-page.recommendations.ago.alex-sutherland.name' | translate}}</h5>
+        <h4 class="quote">"{{'home-page.recommendations.ago.alex-sutherland.qoute-alex-sutherland' | translate}}"</h4>
+        <div class="flex flex-col text-sm gap-2">
+          <div class="flex flex-col">
+            <span>{{'home-page.recommendations.ago.alex-sutherland.occupation' | translate}}</span>
+            <span>{{'home-page.recommendations.ago.alex-sutherland.company' | translate}}</span>
+          </div>
+          <div class="flex flex-col">
+            <span>{{'home-page.recommendations.known-for' | translate}}:</span>
+            <span>· {{'home-page.recommendations.ago.alex-sutherland.known-for.argo' | translate}}</span>
+            <span>· {{'home-page.recommendations.ago.alex-sutherland.known-for.operation-fortune' | translate}}</span>
+            <span>· {{'home-page.recommendations.ago.alex-sutherland.known-for.the-ministry-of-ungentlemanly-warfare' | translate}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="recommendation-grid image-text-shadow">
+        <span>{{'home-page.recommendations.tim-angulo.recommendation-context' | translate}}</span>
+        <h5>{{'home-page.recommendations.tim-angulo.name' | translate}}</h5>
+        <h4 class="quote">"{{'home-page.recommendations.tim-angulo.quote' | translate}}"</h4>
+        <div class="flex flex-col text-sm gap-2">
+          <div class="flex flex-col">
+            <span>{{'home-page.recommendations.tim-angulo.occupation' | translate}}</span>
+          </div>
+          <div class="flex flex-col">
+            <span>{{'home-page.recommendations.known-for' | translate}}:</span>
+            <span>· {{'home-page.recommendations.tim-angulo.known-for.inception' | translate}}</span>
+            <span>· {{'home-page.recommendations.tim-angulo.known-for.blade-runner' | translate}}</span>
+            <span>· {{'home-page.recommendations.tim-angulo.known-for.interstellar' | translate}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <app-carousel class="h-[75vh] w-full" [imageElements]="imageMetadata" [autoScroll]="false"></app-carousel>
+  <div class="flex flex-col items-center">
+    <h1 class="font-bold">{{'home-page.projects' | translate}}</h1>
+    <app-carousel class="h-[75vh] w-full" [imageElements]="imageMetadata" [autoScroll]="false"></app-carousel>
+  </div>
+  <div class="flex flex-col h-screen items-center section-padding">
+    <h1 [innerHTML]="'home-page.who-we-are' | translate"></h1>
+    <div class="w-1/2 aspect-video relative">
+      <img ngSrc="assets/who-we-are.jpg" fill alt="who we are">
+    </div>
+    <h4>{{'home-page.who-we-are-info' | translate}}</h4>
+  </div>
 </div>
