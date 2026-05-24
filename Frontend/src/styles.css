@@ -74,11 +74,6 @@ h1 {
   border-radius: 0.75rem;
 }
 
-.image-bottom-shadow {
-  mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, var(--p-surface-950) 70%, transparent);
-}
-
 .image-text-shadow {
   text-shadow:
     0 0 4px rgba(0, 0, 0, 0.95),

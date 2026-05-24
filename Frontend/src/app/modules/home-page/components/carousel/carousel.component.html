@@ -8,8 +8,13 @@
         <div class="inner-box" [ngClass]="imagePosition ? imagePosition.get(i) : null">
           <h3 class="z-50">{{ image.titleReference | translate }}</h3>
           <div [style.pointer-events]="isActive ? null : 'none'" class="image-container image-border-radius" (mouseenter)="onMouseOverImage(true)" (mouseleave)="onMouseOverImage(false)">
-            <img class="image-bottom-shadow" [ngSrc]="image.path" [alt]="image.titleReference" fill>
+            <img [ngSrc]="image.path" [alt]="image.titleReference" fill>
             <p class="z-50 image-text-shadow col-start-2 row-start-2 self-end">{{ image.descriptionReference | translate }}</p>
+          </div>
+          <div class="reflection-wrapper">
+            <div class="reflection-inner">
+              <img [ngSrc]="image.path" alt="" aria-hidden="true" fill>
+            </div>
           </div>
         </div>
       </div>

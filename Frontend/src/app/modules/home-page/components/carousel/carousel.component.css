@@ -98,6 +98,7 @@
 .image-container img {
   filter: brightness(100%) blur(0px);
   transition: filter 0.3s ease-in-out;
+  object-fit: cover;
 }
 
 .title {
@@ -114,4 +115,25 @@
 }
 
 .next {
+}
+
+.reflection-wrapper {
+  width: 100%;
+  /* aspect-ratio is reliable here: width is always definite, height: 30% is not */
+  aspect-ratio: 16 / 4;
+  overflow: hidden;
+  margin-top: -0.25rem;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0) 65%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0) 65%);
+}
+
+.reflection-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  transform: scaleY(-1);
+}
+
+.reflection-inner img {
+  object-fit: cover;
 }
