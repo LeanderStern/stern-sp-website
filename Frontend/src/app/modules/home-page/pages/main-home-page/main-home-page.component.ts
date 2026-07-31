@@ -28,6 +28,7 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 })
 
 // TODO title für die projekte, bilder optimieren, gsap plugin imports zentralisieren, font scaling mit screensize
+// TODO fill ersetzen mit gesetzten width and height ratios weil das sind nur ratios und keine gesetzten werte
 export class MainHomePageComponent implements OnInit {
   public splashScreenFinished: WritableSignal<boolean> = signal<boolean>(false);
   public readonly imageMetadata: GalleryImageMetadata[] = GALLERY_IMAGE_METADATA;
@@ -38,6 +39,6 @@ export class MainHomePageComponent implements OnInit {
       content: '#content-wrapper',
       smooth: 0,
     });
-    smoother.effects('#quote-image', { speed: 'auto' });
+    smoother.effects('#quote-image', { speed: 0.8 });
   }
 }
